@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace LibretteTests\Queries\Mocks;
 
 use Librette\Queries\IQuery;
