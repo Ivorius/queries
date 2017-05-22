@@ -25,7 +25,7 @@ class SingleItemQuery extends Object implements IQuery, IOuterQuery
 	/**
 	 * @return IQuery
 	 */
-	public function getInnerQuery()
+	public function getInnerQuery() : IQuery
 	{
 		return $this->query;
 	}

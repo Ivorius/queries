@@ -14,7 +14,7 @@ use Librette\Queries\IQueryHandler;
 class QueryHandler implements IQueryHandler
 {
 
-	public function supports(IQuery $query)
+	public function supports(IQuery $query) : bool
 	{
 		return $query instanceof UserQuery;
 	}
@@ -25,4 +25,4 @@ class QueryHandler implements IQueryHandler
 		return $query->fetch(\Mockery::mock(IQueryable::class));
 	}
 
-	}
+}

@@ -28,7 +28,7 @@ class CountQuery extends Object implements IQuery, IOuterQuery
 	/**
 	 * @return IQuery
 	 */
-	public function getInnerQuery()
+	public function getInnerQuery() : IQuery
 	{
 		return $this->query;
 	}
@@ -38,7 +38,7 @@ class CountQuery extends Object implements IQuery, IOuterQuery
 	 * @param IQueryable
 	 * @return int
 	 */
-	public function fetch(IQueryable $queryable)
+	public function fetch(IQueryable $queryable) : int
 	{
 		$result = $queryable->getHandler()->fetch($this->query);
 

@@ -14,7 +14,7 @@ interface IQueryHandler
 	 * @param IQuery
 	 * @return bool
 	 */
-	public function supports(IQuery $query);
+	public function supports(IQuery $query) : bool;
 
 
 	/**

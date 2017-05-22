@@ -20,7 +20,7 @@ interface IResultSet extends \Traversable, \Countable
 	 * @throws InvalidStateException
 	 * @return self
 	 */
-	public function applyPaginator(Paginator $paginator);
+	public function applyPaginator(Paginator $paginator) : self;
 
 
 	/**
@@ -29,12 +29,12 @@ interface IResultSet extends \Traversable, \Countable
 	 * @throws InvalidStateException
 	 * @return self
 	 */
-	public function applyPaging($offset, $limit);
+	public function applyPaging(int $offset, int $limit) : self;
 
 
 	/**
 	 * @return int
 	 */
-	public function getTotalCount();
+	public function getTotalCount() : int;
 
 }

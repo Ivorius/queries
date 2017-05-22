@@ -30,7 +30,7 @@ class OuterQueriesTestCase extends Tester\TestCase
 	private $queryHandler;
 
 
-	public function setUp()
+	public function setUp() : void
 	{
 		$this->queryHandler = $queryHandler = new MainQueryHandler();
 		$internalQh = new InternalQueryHandler(\Mockery::mock(IQueryHandlerAccessor::class)->shouldReceive('get')->andReturn($queryHandler)->getMock());
@@ -39,19 +39,19 @@ class OuterQueriesTestCase extends Tester\TestCase
 	}
 
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		\Mockery::close();
 	}
 
 
-	public function testCount()
+	public function testCount() : void
 	{
 		Assert::same(2, $this->queryHandler->fetch(new CountQuery(new UserQuery())));
 	}
 
 
-	public function testFirst()
+	public function testFirst() : void
 	{
 		Assert::same(['name' => 'John'], $this->queryHandler->fetch(new SingleItemQuery(new UserQuery())));
 	}

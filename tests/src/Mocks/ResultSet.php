@@ -19,38 +19,40 @@ class ResultSet implements \IteratorAggregate, IResultSet
 	private $paginated;
 
 
-	public function __construct($data)
+	public function __construct(array $data)
 	{
 		$this->data = $this->paginated = $data;
 	}
 
 
-	public function applyPaginator(Paginator $paginator)
+	public function applyPaginator(Paginator $paginator) : IResultSet
 	{
 		$this->applyPaging($paginator->getOffset(), $paginator->getLength());
 		$paginator->setItemsPerPage($this->getTotalCount());
+		return $this;
 	}
 
 
-	public function applyPaging($offset, $limit)
+	public function applyPaging(int $offset, int $limit) : IResultSet
 	{
 		$this->paginated = array_slice($this->data, $offset, $limit);
+		return $this;
 	}
 
 
-	public function getTotalCount()
+	public function getTotalCount() : int
 	{
 		return count($this->data);
 	}
 
 
-	public function count()
+	public function count() : int
 	{
 		return count($this->paginated);
 	}
 
 
-	public function getIterator()
+	public function getIterator() : iterable
 	{
 		return new \ArrayIterator($this->data);
 	}

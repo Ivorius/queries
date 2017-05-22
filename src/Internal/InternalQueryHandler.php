@@ -29,7 +29,7 @@ class InternalQueryHandler extends Object implements IQueryHandler
 	}
 
 
-	public function supports(IQuery $query)
+	public function supports(IQuery $query) : bool
 	{
 		return $query instanceof IOuterQuery;
 	}

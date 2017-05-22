@@ -24,19 +24,19 @@ require_once __DIR__ . '/../bootstrap.php';
 class QueryHandlerTestCase extends Tester\TestCase
 {
 
-	public function setUp()
+	public function setUp() : void
 	{
 
 	}
 
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		\Mockery::close();
 	}
 
 
-	public function testBasic()
+	public function testBasic() : void
 	{
 		$queryHandler = new MainQueryHandler();
 		$queryHandler->addHandler(new QueryHandler());
@@ -48,7 +48,7 @@ class QueryHandlerTestCase extends Tester\TestCase
 	}
 
 
-	public function testUnsupportedQuery()
+	public function testUnsupportedQuery() : void
 	{
 		$queryHandler = new MainQueryHandler();
 		$queryHandler->addHandler(\Mockery::mock(IQueryHandler::class)->shouldReceive('supports')->andReturn(FALSE)->getMock());

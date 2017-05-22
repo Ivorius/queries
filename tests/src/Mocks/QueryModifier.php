@@ -15,7 +15,7 @@ class QueryModifier implements IQueryModifier
 	public $queries = [];
 
 
-	public function modify(IQuery $query)
+	public function modify(IQuery $query) : void
 	{
 		$this->queries[] = $query;
 	}

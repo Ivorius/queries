@@ -13,6 +13,6 @@ interface IQueryable
 	/**
 	 * @return IQueryHandler
 	 */
-	public function getHandler();
+	public function getHandler() : IQueryHandler;
 
 }

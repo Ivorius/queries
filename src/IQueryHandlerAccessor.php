@@ -13,6 +13,6 @@ interface IQueryHandlerAccessor
 	/**
 	 * @return IQueryHandler
 	 */
-	public function get();
+	public function get() : IQueryHandler;
 
 }

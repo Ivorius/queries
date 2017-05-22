@@ -14,6 +14,6 @@ interface IResultSetQuery extends IQuery
 	 * @param IQueryable $queryable
 	 * @return IResultSet
 	 */
-	public function fetch(IQueryable $queryable);
+	public function fetch(IQueryable $queryable) : IResultSet;
 
 }

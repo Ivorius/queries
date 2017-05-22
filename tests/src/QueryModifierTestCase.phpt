@@ -22,18 +22,18 @@ require_once __DIR__ . '/../bootstrap.php';
 class QueryModifierTestCase extends Tester\TestCase
 {
 
-	public function setUp()
+	public function setUp() : void
 	{
 	}
 
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		\Mockery::close();
 	}
 
 
-	public function testBasic()
+	public function testBasic() : void
 	{
 		$handler = new MainQueryHandler();
 		$query = new UserQuery();
