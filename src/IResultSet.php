@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Librette\Queries;
 
-use Nette\Utils\Paginator;
-
-
 /**
  * Lazy collection
  *
@@ -14,14 +11,6 @@ use Nette\Utils\Paginator;
  */
 interface IResultSet extends \Traversable, \Countable
 {
-
-	/**
-	 * @param Paginator
-	 * @throws InvalidStateException
-	 * @return self
-	 */
-	public function applyPaginator(Paginator $paginator) : self;
-
 
 	/**
 	 * @param int

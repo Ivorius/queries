@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace LibretteTests\Queries\Mocks;
 
 use Librette\Queries\IResultSet;
-use Nette\Utils\Paginator;
 
 /**
  * @author David Matejka
@@ -22,14 +21,6 @@ class ResultSet implements \IteratorAggregate, IResultSet
 	public function __construct(array $data)
 	{
 		$this->data = $this->paginated = $data;
-	}
-
-
-	public function applyPaginator(Paginator $paginator) : IResultSet
-	{
-		$this->applyPaging($paginator->getOffset(), $paginator->getLength());
-		$paginator->setItemsPerPage($this->getTotalCount());
-		return $this;
 	}
 
 
