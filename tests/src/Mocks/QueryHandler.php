@@ -5,26 +5,26 @@ declare(strict_types=1);
 namespace LibretteTests\Queries\Mocks;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\IQuery;
-use Librette\Queries\IQueryable;
-use Librette\Queries\IQueryHandler;
+use Librette\Queries\QueryInterface;
+use Librette\Queries\QueryableInterface;
+use Librette\Queries\QueryHandlerInterface;
 
 /**
  * @author David Matejka
  */
-class QueryHandler implements IQueryHandler
+class QueryHandler implements QueryHandlerInterface
 {
     use Scream;
 
-	public function supports(IQuery $query) : bool
+	public function supports(QueryInterface $query) : bool
 	{
 		return $query instanceof UserQuery;
 	}
 
 
-	public function fetch(IQuery $query)
+	public function fetch(QueryInterface $query)
 	{
-		return $query->fetch(\Mockery::mock(IQueryable::class));
+		return $query->fetch(\Mockery::mock(QueryableInterface::class));
 	}
 
 }

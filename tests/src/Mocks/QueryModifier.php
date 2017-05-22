@@ -5,20 +5,20 @@ declare(strict_types=1);
 namespace LibretteTests\Queries\Mocks;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\IQuery;
-use Librette\Queries\IQueryModifier;
+use Librette\Queries\QueryInterface;
+use Librette\Queries\QueryModifierInterface;
 
 /**
  * @author David Matejka
  */
-class QueryModifier implements IQueryModifier
+class QueryModifier implements QueryModifierInterface
 {
     use Scream;
 
 	public $queries = [];
 
 
-	public function modify(IQuery $query) : void
+	public function modify(QueryInterface $query) : void
 	{
 		$this->queries[] = $query;
 	}

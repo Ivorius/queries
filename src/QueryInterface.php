@@ -7,13 +7,13 @@ namespace Librette\Queries;
 /**
  * @author David Matejka
  */
-interface IQuery
+interface QueryInterface
 {
 
 	/**
-	 * @param IQueryable
+	 * @param QueryableInterface
 	 * @return mixed
 	 */
-	public function fetch(IQueryable $queryable);
+	public function fetch(QueryableInterface $queryable);
 
 }

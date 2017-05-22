@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace LibretteTests\Queries\Mocks;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\IResultSet;
+use Librette\Queries\ResultSetInterface;
 
 /**
  * @author David Matejka
  */
-class ResultSet implements \IteratorAggregate, IResultSet
+class ResultSet implements \IteratorAggregate, ResultSetInterface
 {
     use Scream;
 
@@ -27,7 +27,7 @@ class ResultSet implements \IteratorAggregate, IResultSet
 	}
 
 
-	public function applyPaging(int $offset, int $limit) : IResultSet
+	public function applyPaging(int $offset, int $limit) : ResultSetInterface
 	{
 		$this->paginated = array_slice($this->data, $offset, $limit);
 		return $this;

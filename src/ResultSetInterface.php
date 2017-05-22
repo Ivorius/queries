@@ -9,7 +9,7 @@ namespace Librette\Queries;
  *
  * @author David Matejka
  */
-interface IResultSet extends \Traversable, \Countable
+interface ResultSetInterface extends \Traversable, \Countable
 {
 
 	/**

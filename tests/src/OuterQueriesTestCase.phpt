@@ -7,8 +7,8 @@ namespace LibretteTests\Queries;
 use Kdyby\StrictObjects\Scream;
 use Librette\Queries\CountQuery;
 use Librette\Queries\Internal\InternalQueryHandler;
-use Librette\Queries\IQueryHandler;
-use Librette\Queries\IQueryHandlerAccessor;
+use Librette\Queries\QueryHandlerInterface;
+use Librette\Queries\QueryHandlerAccessorInterface;
 use Librette\Queries\MainQueryHandler;
 use Librette\Queries\SingleItemQuery;
 use LibretteTests\Queries\Mocks\QueryHandler;
@@ -28,14 +28,14 @@ class OuterQueriesTestCase extends Tester\TestCase
 {
     use Scream;
 
-	/** @var IQueryHandler */
+	/** @var QueryHandler */
 	private $queryHandler;
 
 
 	public function setUp() : void
 	{
 		$this->queryHandler = $queryHandler = new MainQueryHandler();
-		$internalQh = new InternalQueryHandler(\Mockery::mock(IQueryHandlerAccessor::class)->shouldReceive('get')->andReturn($queryHandler)->getMock());
+		$internalQh = new InternalQueryHandler(\Mockery::mock(QueryHandlerAccessorInterface::class)->shouldReceive('get')->andReturn($queryHandler)->getMock());
 		$queryHandler->addHandler($internalQh);
 		$queryHandler->addHandler(new QueryHandler());
 	}

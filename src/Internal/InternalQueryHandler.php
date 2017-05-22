@@ -5,38 +5,38 @@ declare(strict_types=1);
 namespace Librette\Queries\Internal;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\IOuterQuery;
-use Librette\Queries\IQuery;
-use Librette\Queries\IQueryHandler;
-use Librette\Queries\IQueryHandlerAccessor;
+use Librette\Queries\OuterQueryInterface;
+use Librette\Queries\QueryInterface;
+use Librette\Queries\QueryHandlerInterface;
+use Librette\Queries\QueryHandlerAccessorInterface;
 
 /**
  * @author David Matejka
  */
-class InternalQueryHandler implements IQueryHandler
+class InternalQueryHandler implements QueryHandlerInterface
 {
     use Scream;
 
-	/** @var IQueryHandlerAccessor */
+	/** @var QueryHandlerAccessorInterface */
 	private $queryHandlerAccessor;
 
 
 	/**
-	 * @param IQueryHandlerAccessor
+	 * @param QueryHandlerAccessorInterface
 	 */
-	public function __construct(IQueryHandlerAccessor $queryHandlerAccessor)
+	public function __construct(QueryHandlerAccessorInterface $queryHandlerAccessor)
 	{
 		$this->queryHandlerAccessor = $queryHandlerAccessor;
 	}
 
 
-	public function supports(IQuery $query) : bool
+	public function supports(QueryInterface $query) : bool
 	{
-		return $query instanceof IOuterQuery;
+		return $query instanceof OuterQueryInterface;
 	}
 
 
-	public function fetch(IQuery $query)
+	public function fetch(QueryInterface $query)
 	{
 		return $query->fetch(new InternalQueryable($this->queryHandlerAccessor->get()));
 	}

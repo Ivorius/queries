@@ -7,13 +7,13 @@ namespace Librette\Queries;
 /**
  * @author David Matejka
  */
-interface IQueryModifier
+interface QueryModifierInterface
 {
 
 	/**
-	 * @param IQuery
+	 * @param QueryInterface
 	 * @return void
 	 */
-	public function modify(IQuery $query) : void;
+	public function modify(QueryInterface $query) : void;
 
 }

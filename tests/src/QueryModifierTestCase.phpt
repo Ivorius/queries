@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace LibretteTests\Queries;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\IQueryModifier;
+use Librette\Queries\QueryModifierInterface;
 use Librette\Queries\MainQueryHandler;
 use LibretteTests\Queries\Mocks\QueryHandler;
 use LibretteTests\Queries\Mocks\UserQuery;
@@ -39,7 +39,7 @@ class QueryModifierTestCase extends Tester\TestCase
 	{
 		$handler = new MainQueryHandler();
 		$query = new UserQuery();
-		$handler->addModifier(\Mockery::mock(IQueryModifier::class)->shouldReceive('modify')->with($query)->once()->getMock());
+		$handler->addModifier(\Mockery::mock(QueryModifierInterface::class)->shouldReceive('modify')->with($query)->once()->getMock());
 		$handler->addHandler(new QueryHandler());
 		$handler->fetch($query);
 

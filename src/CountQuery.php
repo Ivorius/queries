@@ -9,37 +9,37 @@ use Kdyby\StrictObjects\Scream;
 /**
  * @author David Matejka
  */
-class CountQuery implements IQuery, IOuterQuery
+class CountQuery implements QueryInterface, OuterQueryInterface
 {
     use Scream;
 
-	/** @var IResultSetQuery */
+	/** @var ResultSetQueryInterface */
 	private $query;
 
 
 	/**
-	 * @param IResultSetQuery
+	 * @param ResultSetQueryInterface
 	 */
-	public function __construct(IResultSetQuery $query)
+	public function __construct(ResultSetQueryInterface $query)
 	{
 		$this->query = $query;
 	}
 
 
 	/**
-	 * @return IQuery
+	 * @return QueryInterface
 	 */
-	public function getInnerQuery() : IQuery
+	public function getInnerQuery() : QueryInterface
 	{
 		return $this->query;
 	}
 
 
 	/**
-	 * @param IQueryable
+	 * @param QueryableInterface
 	 * @return int
 	 */
-	public function fetch(IQueryable $queryable) : int
+	public function fetch(QueryableInterface $queryable) : int
 	{
 		$result = $queryable->getHandler()->fetch($this->query);
 

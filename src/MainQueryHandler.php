@@ -9,36 +9,36 @@ use Kdyby\StrictObjects\Scream;
 /**
  * @author David Matejka
  */
-class MainQueryHandler implements IQueryHandler
+class MainQueryHandler implements QueryHandlerInterface
 {
     use Scream;
 
-	/** @var IQueryHandler[] */
+	/** @var QueryHandlerInterface[] */
 	private $handlers = [];
 
-	/** @var IQueryModifier[] */
+	/** @var QueryModifierInterface[] */
 	private $modifiers = [];
 
 
 	/**
-	 * @param IQueryHandler
+	 * @param QueryHandlerInterface
 	 */
-	public function addHandler(IQueryHandler $handler) : void
+	public function addHandler(QueryHandlerInterface $handler) : void
 	{
 		$this->handlers[] = $handler;
 	}
 
 
 	/**
-	 * @param IQueryModifier
+	 * @param QueryModifierInterface
 	 */
-	public function addModifier(IQueryModifier $queryModifier) : void
+	public function addModifier(QueryModifierInterface $queryModifier) : void
 	{
 		$this->modifiers[] = $queryModifier;
 	}
 
 
-	public function supports(IQuery $query) : bool
+	public function supports(QueryInterface $query) : bool
 	{
 		foreach ($this->handlers as $handler) {
 			if ($handler->supports($query)) {
@@ -52,9 +52,9 @@ class MainQueryHandler implements IQueryHandler
 
 	/**
 	 * @param IQuery
-	 * @return mixed|IResultSet
+	 * @return mixed|ResultSetInterface
 	 */
-	public function fetch(IQuery $query)
+	public function fetch(QueryInterface $query)
 	{
 		$handler = $this->resolveHandler($query);
 		if ($handler === NULL) {
@@ -69,7 +69,7 @@ class MainQueryHandler implements IQueryHandler
 	}
 
 
-	private function resolveHandler(IQuery $query) : ?IQueryHandler
+	private function resolveHandler(QueryInterface $query) : ?QueryHandlerInterface
 	{
 		foreach ($this->handlers as $handler) {
 			if ($handler->supports($query)) {
