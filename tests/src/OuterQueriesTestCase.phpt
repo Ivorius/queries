@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LibretteTests\Queries;
 
+use Kdyby\StrictObjects\Scream;
 use Librette\Queries\CountQuery;
 use Librette\Queries\Internal\InternalQueryHandler;
 use Librette\Queries\IQueryHandler;
@@ -25,6 +26,7 @@ require_once __DIR__ . '/../bootstrap.php';
  */
 class OuterQueriesTestCase extends Tester\TestCase
 {
+    use Scream;
 
 	/** @var IQueryHandler */
 	private $queryHandler;

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LibretteTests\Queries;
 
+use Kdyby\StrictObjects\Scream;
 use Librette\Queries\IQueryModifier;
 use Librette\Queries\MainQueryHandler;
 use LibretteTests\Queries\Mocks\QueryHandler;
@@ -21,6 +22,7 @@ require_once __DIR__ . '/../bootstrap.php';
  */
 class QueryModifierTestCase extends Tester\TestCase
 {
+    use Scream;
 
 	public function setUp() : void
 	{

@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace Librette\Queries\Internal;
 
+use Kdyby\StrictObjects\Scream;
 use Librette\Queries\IOuterQuery;
 use Librette\Queries\IQuery;
 use Librette\Queries\IQueryHandler;
 use Librette\Queries\IQueryHandlerAccessor;
-use Nette\Object;
 
 /**
  * @author David Matejka
  */
-class InternalQueryHandler extends Object implements IQueryHandler
+class InternalQueryHandler implements IQueryHandler
 {
+    use Scream;
 
 	/** @var IQueryHandlerAccessor */
 	private $queryHandlerAccessor;

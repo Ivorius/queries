@@ -4,13 +4,14 @@ declare(strict_types=1);
 
 namespace Librette\Queries;
 
-use Nette\Object;
+use Kdyby\StrictObjects\Scream;
 
 /**
  * @author David Matejka
  */
-class CountQuery extends Object implements IQuery, IOuterQuery
+class CountQuery implements IQuery, IOuterQuery
 {
+    use Scream;
 
 	/** @var IResultSetQuery */
 	private $query;

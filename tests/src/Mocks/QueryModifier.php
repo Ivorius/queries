@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LibretteTests\Queries\Mocks;
 
+use Kdyby\StrictObjects\Scream;
 use Librette\Queries\IQuery;
 use Librette\Queries\IQueryModifier;
 
@@ -12,6 +13,8 @@ use Librette\Queries\IQueryModifier;
  */
 class QueryModifier implements IQueryModifier
 {
+    use Scream;
+
 	public $queries = [];
 
 

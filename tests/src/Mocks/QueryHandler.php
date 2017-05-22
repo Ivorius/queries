@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LibretteTests\Queries\Mocks;
 
+use Kdyby\StrictObjects\Scream;
 use Librette\Queries\IQuery;
 use Librette\Queries\IQueryable;
 use Librette\Queries\IQueryHandler;
@@ -13,6 +14,7 @@ use Librette\Queries\IQueryHandler;
  */
 class QueryHandler implements IQueryHandler
 {
+    use Scream;
 
 	public function supports(IQuery $query) : bool
 	{

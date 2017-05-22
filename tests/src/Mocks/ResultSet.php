@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LibretteTests\Queries\Mocks;
 
+use Kdyby\StrictObjects\Scream;
 use Librette\Queries\IResultSet;
 
 /**
@@ -11,6 +12,8 @@ use Librette\Queries\IResultSet;
  */
 class ResultSet implements \IteratorAggregate, IResultSet
 {
+    use Scream;
+
 	/** @var array */
 	private $data;
 

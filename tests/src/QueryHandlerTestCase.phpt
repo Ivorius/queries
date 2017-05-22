@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LibretteTests\Queries;
 
+use Kdyby\StrictObjects\Scream;
 use Librette\Queries\InvalidArgumentException;
 use Librette\Queries\IQueryHandler;
 use Librette\Queries\IResultSet;
@@ -23,6 +24,7 @@ require_once __DIR__ . '/../bootstrap.php';
  */
 class QueryHandlerTestCase extends Tester\TestCase
 {
+    use Scream;
 
 	public function setUp() : void
 	{

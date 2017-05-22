@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Librette\Queries\Internal;
 
+use Kdyby\StrictObjects\Scream;
 use Librette\Queries\IQueryable;
 use Librette\Queries\IQueryHandler;
 
@@ -12,6 +13,7 @@ use Librette\Queries\IQueryHandler;
  */
 class InternalQueryable implements IQueryable
 {
+    use Scream;
 
 	/** @var IQueryHandler */
 	private $queryHandler;

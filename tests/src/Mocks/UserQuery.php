@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace LibretteTests\Queries\Mocks;
 
+use Kdyby\StrictObjects\Scream;
 use Librette\Queries\IQuery;
 use Librette\Queries\IQueryable;
 use Librette\Queries\IResultSet;
@@ -14,6 +15,7 @@ use Librette\Queries\IResultSetQuery;
  */
 class UserQuery implements IResultSetQuery
 {
+    use Scream;
 
 	public function fetch(IQueryable $queryable) : IResultSet
 	{
