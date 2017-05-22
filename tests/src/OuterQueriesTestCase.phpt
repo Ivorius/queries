@@ -56,4 +56,4 @@ class OuterQueriesTestCase extends Tester\TestCase
 }
 
 
-\run(new OuterQueriesTestCase());
+(new OuterQueriesTestCase())->run();

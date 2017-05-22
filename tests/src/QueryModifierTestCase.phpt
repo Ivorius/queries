@@ -44,4 +44,4 @@ class QueryModifierTestCase extends Tester\TestCase
 }
 
 
-\run(new QueryModifierTestCase());
+(new QueryModifierTestCase())->run();
