@@ -9,7 +9,7 @@ use Librette\Queries\CountQuery;
 use Librette\Queries\Internal\InternalQueryHandler;
 use Librette\Queries\QueryHandlerInterface;
 use Librette\Queries\QueryHandlerAccessorInterface;
-use Librette\Queries\MainQueryHandler;
+use Librette\Queries\QueryHandlerChain;
 use Librette\Queries\SingleItemQuery;
 use LibretteTests\Queries\Mocks\QueryHandler;
 use LibretteTests\Queries\Mocks\UserQuery;
@@ -34,7 +34,7 @@ class OuterQueriesTestCase extends Tester\TestCase
 
 	public function setUp() : void
 	{
-		$this->queryHandler = $queryHandler = new MainQueryHandler();
+		$this->queryHandler = $queryHandler = new QueryHandlerChain();
 		$internalQh = new InternalQueryHandler(\Mockery::mock(QueryHandlerAccessorInterface::class)->shouldReceive('get')->andReturn($queryHandler)->getMock());
 		$queryHandler->addHandler($internalQh);
 		$queryHandler->addHandler(new QueryHandler());

@@ -8,7 +8,7 @@ use Kdyby\StrictObjects\Scream;
 use Librette\Queries\InvalidArgumentException;
 use Librette\Queries\QueryHandlerInterface;
 use Librette\Queries\ResultSetInterface;
-use Librette\Queries\MainQueryHandler;
+use Librette\Queries\QueryHandlerChain;
 use LibretteTests\Queries\Mocks\QueryHandler;
 use LibretteTests\Queries\Mocks\UserQuery;
 use Nette;
@@ -40,7 +40,7 @@ class QueryHandlerTestCase extends Tester\TestCase
 
 	public function testBasic() : void
 	{
-		$queryHandler = new MainQueryHandler();
+		$queryHandler = new QueryHandlerChain();
 		$queryHandler->addHandler(new QueryHandler());
 
 		Assert::true($queryHandler->supports(new UserQuery()));
@@ -52,7 +52,7 @@ class QueryHandlerTestCase extends Tester\TestCase
 
 	public function testUnsupportedQuery() : void
 	{
-		$queryHandler = new MainQueryHandler();
+		$queryHandler = new QueryHandlerChain();
 		$queryHandler->addHandler(\Mockery::mock(QueryHandlerInterface::class)->shouldReceive('supports')->andReturn(FALSE)->getMock());
 		Assert::false($queryHandler->supports(new UserQuery()));
 		Assert::throws(function () use ($queryHandler) {

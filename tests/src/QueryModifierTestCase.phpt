@@ -6,7 +6,7 @@ namespace LibretteTests\Queries;
 
 use Kdyby\StrictObjects\Scream;
 use Librette\Queries\QueryModifierInterface;
-use Librette\Queries\MainQueryHandler;
+use Librette\Queries\QueryHandlerChain;
 use LibretteTests\Queries\Mocks\QueryHandler;
 use LibretteTests\Queries\Mocks\UserQuery;
 use Nette;
@@ -37,7 +37,7 @@ class QueryModifierTestCase extends Tester\TestCase
 
 	public function testBasic() : void
 	{
-		$handler = new MainQueryHandler();
+		$handler = new QueryHandlerChain();
 		$query = new UserQuery();
 		$handler->addModifier(\Mockery::mock(QueryModifierInterface::class)->shouldReceive('modify')->with($query)->once()->getMock());
 		$handler->addHandler(new QueryHandler());

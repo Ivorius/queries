@@ -9,7 +9,7 @@ use Kdyby\StrictObjects\Scream;
 /**
  * @author David Matejka
  */
-class MainQueryHandler implements QueryHandlerInterface
+class QueryHandlerChain implements QueryHandlerInterface
 {
     use Scream;
 
