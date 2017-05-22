@@ -8,7 +8,6 @@ use Kdyby\StrictObjects\Scream;
 use Librette\Queries\OuterQueryInterface;
 use Librette\Queries\QueryInterface;
 use Librette\Queries\QueryHandlerInterface;
-use Librette\Queries\QueryHandlerAccessorInterface;
 
 /**
  * @author David Matejka
@@ -17,16 +16,16 @@ class InternalQueryHandler implements QueryHandlerInterface
 {
     use Scream;
 
-	/** @var QueryHandlerAccessorInterface */
-	private $queryHandlerAccessor;
+	/** @var QueryHandlerInterface */
+	private $queryHandler;
 
 
 	/**
-	 * @param QueryHandlerAccessorInterface
+	 * @param QueryHandlerInterface
 	 */
-	public function __construct(QueryHandlerAccessorInterface $queryHandlerAccessor)
+	public function __construct(QueryHandlerInterface $queryHandler)
 	{
-		$this->queryHandlerAccessor = $queryHandlerAccessor;
+		$this->queryHandler = $queryHandler;
 	}
 
 
@@ -38,7 +37,7 @@ class InternalQueryHandler implements QueryHandlerInterface
 
 	public function fetch(QueryInterface $query)
 	{
-		return $query->fetch(new InternalQueryable($this->queryHandlerAccessor->get()));
+		return $query->fetch(new InternalQueryable($this->queryHandler));
 	}
 
 }
