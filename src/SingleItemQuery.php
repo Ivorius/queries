@@ -13,11 +13,11 @@ class SingleItemQuery implements QueryInterface, OuterQueryInterface
 {
     use Scream;
 
-	/** @var ResultSetQueryInterface */
+	/** @var QueryInterface */
 	private $query;
 
 
-	public function __construct(ResultSetQueryInterface $query)
+	public function __construct(QueryInterface $query)
 	{
 		$this->query = $query;
 	}
@@ -29,21 +29,6 @@ class SingleItemQuery implements QueryInterface, OuterQueryInterface
 	public function getInnerQuery() : QueryInterface
 	{
 		return $this->query;
-	}
-
-
-	/**
-	 * @param QueryableInterface
-	 * @return mixed|null
-	 */
-	public function fetch(QueryableInterface $queryable)
-	{
-		/** @var ResultSetInterface $result */
-		$result = $queryable->getHandler()->fetch($this->query);
-		$result->applyPaging(0, 1);
-		$items = iterator_to_array($result);
-
-		return $items ? reset($items) : NULL;
 	}
 
 }

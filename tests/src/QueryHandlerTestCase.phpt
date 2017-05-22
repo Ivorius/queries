@@ -9,8 +9,8 @@ use Librette\Queries\InvalidArgumentException;
 use Librette\Queries\QueryHandlerInterface;
 use Librette\Queries\ResultSetInterface;
 use Librette\Queries\QueryHandlerChain;
-use LibretteTests\Queries\Mocks\QueryHandler;
 use LibretteTests\Queries\Mocks\UserQuery;
+use LibretteTests\Queries\Mocks\UserQueryHandler;
 use Nette;
 use Tester;
 use Tester\Assert;
@@ -41,7 +41,7 @@ class QueryHandlerTestCase extends Tester\TestCase
 	public function testBasic() : void
 	{
 		$queryHandler = new QueryHandlerChain();
-		$queryHandler->addHandler(new QueryHandler());
+		$queryHandler->addHandler(new UserQueryHandler());
 
 		Assert::true($queryHandler->supports(new UserQuery()));
 		$result = $queryHandler->fetch(new UserQuery());

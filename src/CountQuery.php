@@ -13,14 +13,14 @@ class CountQuery implements QueryInterface, OuterQueryInterface
 {
     use Scream;
 
-	/** @var ResultSetQueryInterface */
+	/** @var QueryInterface */
 	private $query;
 
 
 	/**
-	 * @param ResultSetQueryInterface
+	 * @param QueryInterface
 	 */
-	public function __construct(ResultSetQueryInterface $query)
+	public function __construct(QueryInterface $query)
 	{
 		$this->query = $query;
 	}
@@ -32,18 +32,6 @@ class CountQuery implements QueryInterface, OuterQueryInterface
 	public function getInnerQuery() : QueryInterface
 	{
 		return $this->query;
-	}
-
-
-	/**
-	 * @param QueryableInterface
-	 * @return int
-	 */
-	public function fetch(QueryableInterface $queryable) : int
-	{
-		$result = $queryable->getHandler()->fetch($this->query);
-
-		return $result->getTotalCount();
 	}
 
 }

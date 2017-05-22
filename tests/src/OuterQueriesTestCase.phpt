@@ -6,11 +6,12 @@ namespace LibretteTests\Queries;
 
 use Kdyby\StrictObjects\Scream;
 use Librette\Queries\CountQuery;
-use Librette\Queries\Internal\InternalQueryHandler;
+use Librette\Queries\CountQueryHandler;
 use Librette\Queries\QueryHandlerChain;
 use Librette\Queries\SingleItemQuery;
-use LibretteTests\Queries\Mocks\QueryHandler;
+use Librette\Queries\SingleItemQueryHandler;
 use LibretteTests\Queries\Mocks\UserQuery;
+use LibretteTests\Queries\Mocks\UserQueryHandler;
 use Nette;
 use Tester;
 use Tester\Assert;
@@ -26,16 +27,17 @@ class OuterQueriesTestCase extends Tester\TestCase
 {
     use Scream;
 
-	/** @var QueryHandler */
+	/** @var UserQueryHandler */
 	private $queryHandler;
 
 
 	public function setUp() : void
 	{
 		$this->queryHandler = $queryHandler = new QueryHandlerChain();
-		$internalQh = new InternalQueryHandler($queryHandler);
-		$queryHandler->addHandler($internalQh);
-		$queryHandler->addHandler(new QueryHandler());
+
+		$queryHandler->addHandler(new CountQueryHandler($queryHandler));
+		$queryHandler->addHandler(new SingleItemQueryHandler($queryHandler));
+		$queryHandler->addHandler(new UserQueryHandler());
 	}
 
 

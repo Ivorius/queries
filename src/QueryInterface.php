@@ -9,11 +9,4 @@ namespace Librette\Queries;
  */
 interface QueryInterface
 {
-
-	/**
-	 * @param QueryableInterface
-	 * @return mixed
-	 */
-	public function fetch(QueryableInterface $queryable);
-
 }
