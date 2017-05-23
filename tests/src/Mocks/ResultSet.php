@@ -7,9 +7,6 @@ namespace LibretteTests\Queries\Mocks;
 use Kdyby\StrictObjects\Scream;
 use Librette\Queries\ResultSetInterface;
 
-/**
- * @author David Matejka
- */
 class ResultSet implements \IteratorAggregate, ResultSetInterface
 {
     use Scream;

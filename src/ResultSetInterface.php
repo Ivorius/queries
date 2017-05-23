@@ -6,8 +6,6 @@ namespace Librette\Queries;
 
 /**
  * Lazy collection
- *
- * @author David Matejka
  */
 interface ResultSetInterface extends \Traversable, \Countable
 {

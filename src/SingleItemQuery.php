@@ -6,9 +6,6 @@ namespace Librette\Queries;
 
 use Kdyby\StrictObjects\Scream;
 
-/**
- * @author David Matejka
- */
 class SingleItemQuery implements QueryInterface, OuterQueryInterface
 {
     use Scream;
