@@ -6,7 +6,7 @@ namespace Librette\Queries\Exception;
 
 use Kdyby\StrictObjects\Scream;
 
-class UnexpectedValueException extends \UnexpectedValueException
+class UnexpectedValueException extends \UnexpectedValueException implements ExceptionInterface
 {
     use Scream;
 }

@@ -6,7 +6,7 @@ namespace Librette\Queries\Exception;
 
 use Kdyby\StrictObjects\Scream;
 
-class InvalidStateException extends \RuntimeException
+class InvalidStateException extends \RuntimeException implements ExceptionInterface
 {
     use Scream;
 }
