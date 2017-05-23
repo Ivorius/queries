@@ -2,11 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Librette\Queries;
+namespace Librette\Queries\Query;
 
 use Kdyby\StrictObjects\Scream;
+use Librette\Queries\QueryHandlerInterface;
+use Librette\Queries\QueryInterface;
+use Librette\Queries\ResultSetInterface;
 
-class SingleItemQueryHandler implements QueryHandlerInterface
+class CountQueryHandler implements QueryHandlerInterface
 {
     use Scream;
 
@@ -20,20 +23,17 @@ class SingleItemQueryHandler implements QueryHandlerInterface
 
     public function fetch(QueryInterface $query)
     {
-        assert($query instanceof SingleItemQuery);
+        assert($query instanceof CountQuery);
 
         $result = $this->queryHandler->fetch($query->getInnerQuery());
         assert($result instanceof ResultSetInterface);
 
-        $result->applyPaging(0, 1);
-        $items = iterator_to_array($result);
-
-        return $items ? reset($items) : NULL;
+        return $result->getTotalCount();
     }
 
     public function supports(QueryInterface $query) : bool
     {
-        return $query instanceof SingleItemQuery;
+        return $query instanceof CountQuery;
     }
 
 }

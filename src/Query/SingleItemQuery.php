@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Librette\Queries;
+namespace Librette\Queries\Query;
 
 use Kdyby\StrictObjects\Scream;
+use Librette\Queries\OuterQueryInterface;
+use Librette\Queries\QueryInterface;
 
 class SingleItemQuery implements QueryInterface, OuterQueryInterface
 {

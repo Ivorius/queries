@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace LibretteTests\Queries;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\CountQuery;
-use Librette\Queries\CountQueryHandler;
+use Librette\Queries\Query\CountQuery;
+use Librette\Queries\Query\CountQueryHandler;
+use Librette\Queries\Query\SingleItemQuery;
+use Librette\Queries\Query\SingleItemQueryHandler;
 use Librette\Queries\QueryHandlerChain;
-use Librette\Queries\SingleItemQuery;
-use Librette\Queries\SingleItemQueryHandler;
 use LibretteTests\Queries\Mocks\UserQuery;
 use LibretteTests\Queries\Mocks\UserQueryHandler;
-use Nette;
 use Tester;
 use Tester\Assert;
 
