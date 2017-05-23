@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Librette\Queries\Query;
+namespace UselessSoft\Queries\Query;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\OuterQueryInterface;
-use Librette\Queries\QueryInterface;
+use UselessSoft\Queries\OuterQueryInterface;
+use UselessSoft\Queries\QueryInterface;
 
 class CountQuery implements QueryInterface, OuterQueryInterface
 {

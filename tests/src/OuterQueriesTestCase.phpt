@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace LibretteTests\Queries;
+namespace UselessSoftTests\Queries;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\Query\CountQuery;
-use Librette\Queries\Query\CountQueryHandler;
-use Librette\Queries\Query\SingleItemQuery;
-use Librette\Queries\Query\SingleItemQueryHandler;
-use Librette\Queries\QueryHandlerChain;
-use LibretteTests\Queries\Mocks\UserQuery;
-use LibretteTests\Queries\Mocks\UserQueryHandler;
+use UselessSoft\Queries\Query\CountQuery;
+use UselessSoft\Queries\Query\CountQueryHandler;
+use UselessSoft\Queries\Query\SingleItemQuery;
+use UselessSoft\Queries\Query\SingleItemQueryHandler;
+use UselessSoft\Queries\QueryHandlerChain;
+use UselessSoftTests\Queries\Mocks\UserQuery;
+use UselessSoftTests\Queries\Mocks\UserQueryHandler;
 use Tester;
 use Tester\Assert;
 

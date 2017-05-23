@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Librette\Queries\Exception;
+namespace UselessSoft\Queries\Exception;
 
 interface ExceptionInterface
 {

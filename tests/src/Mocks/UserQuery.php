@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LibretteTests\Queries\Mocks;
+namespace UselessSoftTests\Queries\Mocks;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\QueryInterface;
+use UselessSoft\Queries\QueryInterface;
 
 class UserQuery implements QueryInterface
 {

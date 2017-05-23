@@ -1,5 +1,5 @@
 {
-	"name": "librette/queries",
+	"name": "useless-soft/queries",
 	"license": ["BSD-3-Clause"],
 	"require": {
 		"php": "^7.1",
@@ -12,7 +12,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Librette\\Queries\\": "src/"
+			"UselessSoft\\Queries\\": "src/"
 		}
 	}
 }

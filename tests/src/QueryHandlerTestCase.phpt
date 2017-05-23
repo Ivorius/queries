@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace LibretteTests\Queries;
+namespace UselessSoftTests\Queries;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\Exception\InvalidArgumentException;
-use Librette\Queries\QueryHandlerInterface;
-use Librette\Queries\ResultSetInterface;
-use Librette\Queries\QueryHandlerChain;
-use LibretteTests\Queries\Mocks\UserQuery;
-use LibretteTests\Queries\Mocks\UserQueryHandler;
+use UselessSoft\Queries\Exception\InvalidArgumentException;
+use UselessSoft\Queries\QueryHandlerInterface;
+use UselessSoft\Queries\ResultSetInterface;
+use UselessSoft\Queries\QueryHandlerChain;
+use UselessSoftTests\Queries\Mocks\UserQuery;
+use UselessSoftTests\Queries\Mocks\UserQueryHandler;
 use Nette;
 use Tester;
 use Tester\Assert;

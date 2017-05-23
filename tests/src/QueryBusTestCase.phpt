@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace LibretteTests\Queries;
+namespace UselessSoftTests\Queries;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\QueryBus;
-use Librette\Queries\QueryHandlerInterface;
-use Librette\Queries\QueryInterface;
+use UselessSoft\Queries\QueryBus;
+use UselessSoft\Queries\QueryHandlerInterface;
+use UselessSoft\Queries\QueryInterface;
 use Tester;
 use Tester\Assert;
 

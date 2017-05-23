@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Librette\Queries;
+namespace UselessSoft\Queries;
 
-use Librette\Queries\Exception\InvalidStateException;
+use UselessSoft\Queries\Exception\InvalidStateException;
 
 /**
  * Lazy collection

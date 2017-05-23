@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Librette\Queries;
+namespace UselessSoft\Queries;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\Exception\InvalidArgumentException;
+use UselessSoft\Queries\Exception\InvalidArgumentException;
 
 class QueryHandlerChain implements QueryHandlerInterface
 {
