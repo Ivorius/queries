@@ -16,25 +16,12 @@ class QueryHandlerChain implements QueryHandlerInterface
 	/** @var QueryHandlerInterface[] */
 	private $handlers = [];
 
-	/** @var QueryModifierInterface[] */
-	private $modifiers = [];
-
-
 	/**
 	 * @param QueryHandlerInterface
 	 */
 	public function addHandler(QueryHandlerInterface $handler) : void
 	{
 		$this->handlers[] = $handler;
-	}
-
-
-	/**
-	 * @param QueryModifierInterface
-	 */
-	public function addModifier(QueryModifierInterface $queryModifier) : void
-	{
-		$this->modifiers[] = $queryModifier;
 	}
 
 
@@ -59,10 +46,6 @@ class QueryHandlerChain implements QueryHandlerInterface
 		$handler = $this->resolveHandler($query);
 		if ($handler === NULL) {
 			throw new InvalidArgumentException("Unsupported query.");
-		}
-
-		foreach ($this->modifiers as $modifier) {
-			$modifier->modify($query);
 		}
 
 		return $handler->fetch($query);
