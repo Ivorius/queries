@@ -1,21 +1,18 @@
 {
-	"name": "librette/queries",
-	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"name": "useless-soft/queries",
+	"license": ["BSD-3-Clause"],
 	"require": {
-		"nette/utils": "~2.2"
+		"php": "^7.1",
+		"kdyby/strict-objects": "^1.0"
 	},
 	"require-dev": {
 		"tracy/tracy": "~2.2",
 		"nette/tester": "@dev",
-		"mockery/mockery": "0.9.*",
-		"nette/di": "~2.2"
+		"mockery/mockery": "0.9.*"
 	},
 	"autoload": {
 		"psr-4": {
-			"Librette\\Queries\\": "src/"
-		},
-		"files": [
-			"src/exceptions.php"
-		]
+			"UselessSoft\\Queries\\": "src/"
+		}
 	}
 }

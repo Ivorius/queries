@@ -1,15 +1,17 @@
 <?php
-namespace LibretteTests\Queries;
 
-use Librette\Queries\CountQuery;
-use Librette\Queries\Internal\InternalQueryHandler;
-use Librette\Queries\IQueryHandler;
-use Librette\Queries\IQueryHandlerAccessor;
-use Librette\Queries\MainQueryHandler;
-use Librette\Queries\SingleItemQuery;
-use LibretteTests\Queries\Mocks\QueryHandler;
-use LibretteTests\Queries\Mocks\UserQuery;
-use Nette;
+declare(strict_types=1);
+
+namespace UselessSoftTests\Queries;
+
+use Kdyby\StrictObjects\Scream;
+use UselessSoft\Queries\Query\CountQuery;
+use UselessSoft\Queries\Query\CountQueryHandler;
+use UselessSoft\Queries\Query\SingleItemQuery;
+use UselessSoft\Queries\Query\SingleItemQueryHandler;
+use UselessSoft\Queries\QueryHandlerChain;
+use UselessSoftTests\Queries\Mocks\UserQuery;
+use UselessSoftTests\Queries\Mocks\UserQueryHandler;
 use Tester;
 use Tester\Assert;
 
@@ -17,38 +19,39 @@ require_once __DIR__ . '/../bootstrap.php';
 
 
 /**
- * @author David Matějka
  * @testCase
  */
 class OuterQueriesTestCase extends Tester\TestCase
 {
+    use Scream;
 
-	/** @var IQueryHandler */
+	/** @var UserQueryHandler */
 	private $queryHandler;
 
 
-	public function setUp()
+	public function setUp() : void
 	{
-		$this->queryHandler = $queryHandler = new MainQueryHandler();
-		$internalQh = new InternalQueryHandler(\Mockery::mock(IQueryHandlerAccessor::class)->shouldReceive('get')->andReturn($queryHandler)->getMock());
-		$queryHandler->addHandler($internalQh);
-		$queryHandler->addHandler(new QueryHandler());
+		$this->queryHandler = $queryHandler = new QueryHandlerChain();
+
+		$queryHandler->addHandler(new CountQueryHandler($queryHandler));
+		$queryHandler->addHandler(new SingleItemQueryHandler($queryHandler));
+		$queryHandler->addHandler(new UserQueryHandler());
 	}
 
 
-	public function tearDown()
+	public function tearDown() : void
 	{
 		\Mockery::close();
 	}
 
 
-	public function testCount()
+	public function testCount() : void
 	{
 		Assert::same(2, $this->queryHandler->fetch(new CountQuery(new UserQuery())));
 	}
 
 
-	public function testFirst()
+	public function testFirst() : void
 	{
 		Assert::same(['name' => 'John'], $this->queryHandler->fetch(new SingleItemQuery(new UserQuery())));
 	}
@@ -56,4 +59,4 @@ class OuterQueriesTestCase extends Tester\TestCase
 }
 
 
-\run(new OuterQueriesTestCase());
+(new OuterQueriesTestCase())->run();

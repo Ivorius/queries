@@ -1,14 +1,16 @@
 <?php
-namespace LibretteTests\Queries\Mocks;
 
-use Librette\Queries\IResultSet;
-use Nette\Utils\Paginator;
+declare(strict_types=1);
 
-/**
- * @author David Matejka
- */
-class ResultSet implements \IteratorAggregate, IResultSet
+namespace UselessSoftTests\Queries\Mocks;
+
+use Kdyby\StrictObjects\Scream;
+use UselessSoft\Queries\ResultSetInterface;
+
+class ResultSet implements \IteratorAggregate, ResultSetInterface
 {
+    use Scream;
+
 	/** @var array */
 	private $data;
 
@@ -16,38 +18,32 @@ class ResultSet implements \IteratorAggregate, IResultSet
 	private $paginated;
 
 
-	public function __construct($data)
+	public function __construct(array $data)
 	{
 		$this->data = $this->paginated = $data;
 	}
 
 
-	public function applyPaginator(Paginator $paginator)
-	{
-		$this->applyPaging($paginator->getOffset(), $paginator->getLength());
-		$paginator->setItemsPerPage($this->getTotalCount());
-	}
-
-
-	public function applyPaging($offset, $limit)
+	public function applyPaging(int $offset, int $limit) : ResultSetInterface
 	{
 		$this->paginated = array_slice($this->data, $offset, $limit);
+		return $this;
 	}
 
 
-	public function getTotalCount()
+	public function getTotalCount() : int
 	{
 		return count($this->data);
 	}
 
 
-	public function count()
+	public function count() : int
 	{
 		return count($this->paginated);
 	}
 
 
-	public function getIterator()
+	public function getIterator() : iterable
 	{
 		return new \ArrayIterator($this->data);
 	}
