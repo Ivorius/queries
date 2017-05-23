@@ -13,9 +13,6 @@
 	"autoload": {
 		"psr-4": {
 			"Librette\\Queries\\": "src/"
-		},
-		"files": [
-			"src/exceptions.php"
-		]
+		}
 	}
 }

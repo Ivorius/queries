@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace LibretteTests\Queries;
 
 use Kdyby\StrictObjects\Scream;
-use Librette\Queries\InvalidArgumentException;
+use Librette\Queries\Exception\InvalidArgumentException;
 use Librette\Queries\QueryHandlerInterface;
 use Librette\Queries\ResultSetInterface;
 use Librette\Queries\QueryHandlerChain;

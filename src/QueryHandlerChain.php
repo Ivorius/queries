@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Librette\Queries;
 
 use Kdyby\StrictObjects\Scream;
+use Librette\Queries\Exception\InvalidArgumentException;
 
 class QueryHandlerChain implements QueryHandlerInterface
 {
