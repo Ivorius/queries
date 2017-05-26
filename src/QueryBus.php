@@ -6,7 +6,7 @@ namespace UselessSoft\Queries;
 
 use Kdyby\StrictObjects\Scream;
 
-class QueryBus implements QueryHandlerInterface
+class QueryBus implements QueryBusInterface
 {
     use Scream;
 
