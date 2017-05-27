@@ -18,9 +18,9 @@ class QueryBus implements QueryBusInterface
         $this->masterHandler = $masterHandler;
     }
 
-    public function fetch(QueryInterface $query)
+    public function handle(QueryInterface $query)
     {
-        return $this->masterHandler->fetch($query);
+        return $this->masterHandler->handle($query);
     }
 
     public function supports(QueryInterface $query) : bool

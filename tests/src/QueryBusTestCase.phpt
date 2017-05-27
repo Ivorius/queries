@@ -38,12 +38,12 @@ class QueryBusTestCase extends Tester\TestCase
 		$queryHandler = \Mockery::mock(QueryHandlerInterface::class);
 		$query = \Mockery::mock(QueryInterface::class);
 
-		$queryHandler->shouldReceive('fetch')->with($query)->andReturn(123);
+		$queryHandler->shouldReceive('handle')->with($query)->andReturn(123);
 		$queryHandler->shouldReceive('supports')->with($query)->andReturn(TRUE);
 
 		$bus = new QueryBus($queryHandler);
 		Assert::true($bus->supports($query));
-		$result = $bus->fetch($query);
+		$result = $bus->handle($query);
 		Assert::same(123, $result);
 	}
 

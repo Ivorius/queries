@@ -18,6 +18,6 @@ interface QueryHandlerInterface
 	 * @param QueryInterface
 	 * @return mixed|ResultSetInterface
 	 */
-	public function fetch(QueryInterface $query);
+	public function handle(QueryInterface $query);
 
 }

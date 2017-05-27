@@ -43,7 +43,7 @@ class QueryHandlerTestCase extends Tester\TestCase
 		$queryHandler->addHandler(new UserQueryHandler());
 
 		Assert::true($queryHandler->supports(new UserQuery()));
-		$result = $queryHandler->fetch(new UserQuery());
+		$result = $queryHandler->handle(new UserQuery());
 		Assert::type(ResultSetInterface::class, $result);
 		Assert::same([['name' => 'John'], ['name' => 'Jack']], iterator_to_array($result));
 	}
@@ -55,7 +55,7 @@ class QueryHandlerTestCase extends Tester\TestCase
 		$queryHandler->addHandler(\Mockery::mock(QueryHandlerInterface::class)->shouldReceive('supports')->andReturn(FALSE)->getMock());
 		Assert::false($queryHandler->supports(new UserQuery()));
 		Assert::throws(function () use ($queryHandler) {
-			$queryHandler->fetch(new UserQuery());
+			$queryHandler->handle(new UserQuery());
 
 		}, InvalidArgumentException::class, 'Unsupported query.');
 	}

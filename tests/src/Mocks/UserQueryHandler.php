@@ -13,7 +13,7 @@ class UserQueryHandler implements QueryHandlerInterface
 {
     use Scream;
 
-    public function fetch(QueryInterface $query) : ResultSetInterface
+    public function handle(QueryInterface $query) : ResultSetInterface
     {
         return new ResultSet([['name' => 'John'], ['name' => 'Jack']]);
     }

@@ -21,11 +21,11 @@ class SingleItemQueryHandler implements QueryHandlerInterface
         $this->queryHandler = $queryHandler;
     }
 
-    public function fetch(QueryInterface $query)
+    public function handle(QueryInterface $query)
     {
         assert($query instanceof SingleItemQuery);
 
-        $result = $this->queryHandler->fetch($query->getInnerQuery());
+        $result = $this->queryHandler->handle($query->getInnerQuery());
         assert($result instanceof ResultSetInterface);
 
         $result->applyPaging(0, 1);

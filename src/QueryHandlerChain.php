@@ -39,14 +39,14 @@ class QueryHandlerChain implements QueryHandlerInterface
 	 * @param IQuery
 	 * @return mixed|ResultSetInterface
 	 */
-	public function fetch(QueryInterface $query)
+	public function handle(QueryInterface $query)
 	{
 		$handler = $this->resolveHandler($query);
 		if ($handler === NULL) {
 			throw new InvalidArgumentException("Unsupported query.");
 		}
 
-		return $handler->fetch($query);
+		return $handler->handle($query);
 	}
 
 

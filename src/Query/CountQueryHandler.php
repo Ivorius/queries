@@ -21,11 +21,11 @@ class CountQueryHandler implements QueryHandlerInterface
         $this->queryHandler = $queryHandler;
     }
 
-    public function fetch(QueryInterface $query)
+    public function handle(QueryInterface $query)
     {
         assert($query instanceof CountQuery);
 
-        $result = $this->queryHandler->fetch($query->getInnerQuery());
+        $result = $this->queryHandler->handle($query->getInnerQuery());
         assert($result instanceof ResultSetInterface);
 
         return $result->getTotalCount();

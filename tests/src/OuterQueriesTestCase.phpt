@@ -47,13 +47,13 @@ class OuterQueriesTestCase extends Tester\TestCase
 
 	public function testCount() : void
 	{
-		Assert::same(2, $this->queryHandler->fetch(new CountQuery(new UserQuery())));
+		Assert::same(2, $this->queryHandler->handle(new CountQuery(new UserQuery())));
 	}
 
 
 	public function testFirst() : void
 	{
-		Assert::same(['name' => 'John'], $this->queryHandler->fetch(new SingleItemQuery(new UserQuery())));
+		Assert::same(['name' => 'John'], $this->queryHandler->handle(new SingleItemQuery(new UserQuery())));
 	}
 
 }
