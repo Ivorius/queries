@@ -3,7 +3,7 @@
 	"license": ["BSD-3-Clause"],
 	"require": {
 		"php": "^7.1",
-		"kdyby/strict-objects": "^1.0"
+		"kdyby/strict-objects": "^3.0-dev"
 	},
 	"require-dev": {
 		"tracy/tracy": "~2.2",
